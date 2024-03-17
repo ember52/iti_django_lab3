@@ -1,0 +1,27 @@
+{% extends 'book_library/layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<h1>{{author.name}}</h1>
+<div class="card mb-3">
+<img src="{{ author.image.url }}" alt="{{ author.name }}"
+       width="800" height="400"
+       class="img-fuid mx-auto">
+  <div class="card-body">
+    <h3 class="card-title">{{author.name}}</h3>
+    <p class="card-text">{{author.bdate}}</p>
+    <a href="{% url 'authors' %}" class="btn btn-primary">Return</a>
+    <a href="{% url 'update_author' author.id %}" class="btn btn-primary">Update AUTHOR </a>
+  </div>
+</div>
+<h3>Books</h3>
+{% for book in author.books.all %}
+<div class="card" style="width: 15rem;">
+  <img src="{{ book.image.url }}" alt="{{ book.name }}"  width="100" height="150"
+    class="img-fluid mx-auto" >
+    <div class="card-body">
+      <h5 class="card-title"> Title: {{book.name}}</h5>
+      <a href="{% url 'book' book.id %}" class="btn btn-primary">SHOW BOOK</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}

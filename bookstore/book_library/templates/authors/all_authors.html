@@ -1,0 +1,24 @@
+{% extends 'book_library/layouts/base.html' %}
+{% load static %}
+{% block 'content' %}
+<h1>  ALL AUTHORS </h1>
+<a
+  href="{% url 'create_author' %}"
+  class="btn btn-primary"
+>
+  Create New Author
+</a> 
+{% for author in authors %}
+<div class="card" style="width: 15rem;">
+<img src="{{ author.image.url }}" alt="{{ author.name }}"  width="100" height="150"
+  class="img-fluid mx-auto" >
+
+  <div class="card-body">
+    <h5 class="card-title"> Title: {{author.name}}</h5>
+    <h4 class="card-price"> Number of Pages: {{author.bdate}}</h4>
+    <a href="{% url 'author' author.id %}" class="btn btn-primary">SHOW AUTHOR</a> 
+    <a href="{% url 'delete_author' author.id %}" class="btn btn-primary">DELETE AUTHOR</a> 
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'book_library/layouts/base.html' %}
+{% block 'content' %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  {{form}}
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+{% endblock %}
